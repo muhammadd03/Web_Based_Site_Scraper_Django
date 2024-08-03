@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteScrambler</title>
+    <link rel="stylesheet" href="static/myapp/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>SiteScraper</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="{% url 'scrape'%}" class="start-button">Start</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="home-section">
+            <div class="left">
+                <h2>Explore the Web</h2>
+                <p>Our web-based scraper offers a powerful tool for effortlessly extracting data from websites</p>
+                <p>Elevate Your Online Data Gathering</p>
+                <div class="buttons">
+                    <button class="scrape"><a href="{% url 'scrape'%}" class="start-button" style="text-decoration: none;">Scrape</a></button>
+                    <button class="analyze">Analyze</button>
+                </div>
+            </div>
+            <div class="right">
+                <h2 style="text-align: center;">Uncovering Insights</h2>
+                <p style="text-align: center;">Harness the power of our robust web scraping</p>
+                <img src="{% static 'images/scraper.png' %}" alt="Example Image">
+            </div>
+        </section>
+        <section id="about" class="about-section">
+            <div>
+            <h2>About</h2>
+            <p>Welcome to SiteScrambler, your trusted partner in web data extraction. Founded in 2024, we are a team of dedicated professionals passionate about simplifying data gathering processes for businesses and individuals alike.</p>
+            <p>Our mission is to provide powerful, user-friendly web scraping tools that enable you to harness the full potential of online data. Whether you're a researcher, marketer, or developer, our solutions are designed to meet your specific needs.</p>
+            <p>At SiteScrambler, we believe in the power of data to transform ideas into reality. Join us on our journey to explore new possibilities and uncover valuable insights from the web.</p>
+            <p>If you have any questions or would like to learn more about our services, please feel free to reach out. We're here to support you every step of the way.</p>
+            </div>
+            <div>
+                <img src="{% static 'images/about.png' %}" alt="Example Image">
+            </div>
+            
+        </section>
+        <section id="services" class="content-section">
+            <h2>Services</h2>
+            <p>Our services include web scraping, data analysis, and custom data solutions tailored to your needs.</p>
+            <img src="{% static 'images/services.png' %}" alt="Example Image">
+        </section>
+        <section id="contact" class="content-section">
+            <h2>Contact</h2>
+            <p>Get in touch with us for any inquiries or support. We're here to help you!</p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

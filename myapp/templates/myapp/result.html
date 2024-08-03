@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Collector</title>
+    <style>
+        
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 28px;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.start-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #333;
+        }
+        .btn-primary {
+            background-color: black;
+            border-color: black;
+        }
+        .btn-warning {
+            background-color: #ffffff;
+            border-color: #000000;
+            color: black;
+        }
+        .thead-dark th {
+            background-color: black;
+            border-color: black;
+        }
+    </style>
+</head>
+<header>
+    <div class="logo">
+        <h1 style="font-size: 2em;">SiteScraper</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'index' %}">About</a></li>
+            <li><a href="{% url 'index' %}">Services</a></li>
+            <li><a href="{% url 'index' %}">Contact</a></li>
+            <li><a href="{% url 'scrape'%}" class="start-button">Start</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 m-5 text-center">
+                <h1>Link Collector</h1>
+            </div>
+        </div>
+        <div class="row m-5 justify-content-center">
+            <div class="col-md-4">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="site" id="site" class="form-control" placeholder="Enter site address">
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary" type="submit">Scrape</button>
+            </div>
+                </form>
+            <div class="col-md-2">
+                <a href="/delete" class="btn btn-warning">Delete</a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for link in data %}
+                      <tr>
+                        <td>{{link.id}}</td>
+                        <td>{{link.name}}</td>
+                        <td>{{link.address}}</td>
+                      </tr>
+                    {% endfor %}  
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
